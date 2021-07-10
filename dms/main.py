@@ -175,9 +175,9 @@ def main(argv):
     for sample in stats:
         assert stats[sample][0] == counts[sample][0]
 
-    for sample in all_reference_samples(experiments):
-        out_path = os.path.join(params.output_dir, 'Output', f'{sample}_stats.tsv')
-        write_stats(stats[sample], out_path)
+#     for sample in all_reference_samples(experiments):
+#         out_path = os.path.join(params.output_dir, 'Output', f'{sample}_stats.tsv')
+#         write_stats(stats[sample], out_path)
 
     data = process_all_experiments(params, tiles, samples, experiments, counts)
     for protein, exps in proteins.items():
