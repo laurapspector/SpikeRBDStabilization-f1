@@ -109,31 +109,31 @@ def parse_analysis(c):
                                          ' section.')
 
     for name, value in c.items('Analysis'):
-        if name == 'control_filename': c = maybe_quoted_string(value)
-        if name == 'antibody_filename': a = maybe_quoted_string(value)
+        if name == 'control_filepath': c = maybe_quoted_string(value)
+        if name == 'antibody_filepath': a = maybe_quoted_string(value)
         if name == 'FDR': f = float(value)
         if name == 'significance': s = float(value)
         if name == 'output_title': o = maybe_quoted_string(value)
 
     return c, a, f, s, o
 
-def perform_analysis(c_file, a_file, fdr, significance, out, sizes, od, prd, all_positions, wt_seq):
+def perform_analysis(c_file, a_file, fdr, significance, out, sizes, prd, all_positions, wt_seq):
     Abs = ['nAb']
-    tiles = [1, 2, 3, 4]
+    tiles = [1, 2, 3, 4, 5, 6, 7, 8]
     replicates = [1]
 
     control = \
         {(rep, tile) : group
-         for (rep, d) in [(rep, read_table(os.path.join(od, c_file)))
+         for (rep, d) in [(rep, read_table(c_file))
                           for rep in replicates]
          for (tile, group) in d.groupby('tile')}
 
     data = \
         {(Ab, rep, tile) : group
          for ((Ab, rep), d) in [((Ab, rep),
-                                 read_table(os.path.join(od, a_file)))
+                                 read_table(a_file))
                                 for (Ab, rep) in it.product(Abs, replicates)
-                                if os.path.exists(os.path.join(od, a_file))]
+                                if os.path.exists(a_file)]
          for (tile, group) in d.groupby('tile')}
 
     thresholds = {(rep, tile) : calculate_ER_threshold(d, fdr, sizes[tile])
@@ -171,7 +171,6 @@ def main(argv):
         quit()
 
     current_directory = os.getcwd()
-    output_directory = os.path.join(current_directory, 'Output')
     processed_directory = os.path.join(current_directory, 'Processed')
 
     positions, wt_seq = parse_args_again(argv)
@@ -186,6 +185,6 @@ def main(argv):
     config.read(argv[1])
     c_file, a_file, fdr, significance, out = parse_analysis(config)
 
-    perform_analysis(c_file, a_file, fdr, significance, out, sizes, output_directory, processed_directory, all_positions, wt_seq)
+    perform_analysis(c_file, a_file, fdr, significance, out, sizes, processed_directory, all_positions, wt_seq)
 
     return
