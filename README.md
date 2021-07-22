@@ -12,7 +12,7 @@ Last Updated: July 21 2021
 
 ### 1. ABOUT: ###
 - - - -
-This software identifies potential escape mutants for a given neutralizing antibody (nAb) that binds to the Spike receptor binding domain (S RBD) on SARS-CoV-2. The code was initially used in Francino-Urdaniz et al. (2021). To accompany this publication, a protocol paper was written with explicit instructions for completing experiments and running this software correctly **(link to be added upon publication)**.
+This software identifies potential escape mutants for a given neutralizing antibody (nAb) that binds to the Spike receptor binding domain (S RBD) on SARS-CoV-2. The code was initially used in Francino-Urdaniz et al. (2021). To accompany this, a protocol paper was written with explicit instructions for completing experiments and running this software correctly **(link to be added upon publication)**.
 
 The software includes two separate modules: deep mutational scanning (abbreviated 'dms') and 'analysis'. They are run separately, first the dms module and then the analysis module. The dms module is responsible for compiling all data from deep sequencing FASTQ files and calculating basic metrics. The analysis section calculates statistics, determines escape mutants and generates the final CSV files and Microsoft Excel heatmaps.
 
