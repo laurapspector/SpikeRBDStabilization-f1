@@ -1,7 +1,6 @@
 SpikeRBDStabilization README File
 
-Last Updated: July 21 2021\
-Current Version: 1.0
+Last Updated: July 21 2021
 
 ## CONTENTS: ##
 1. About
