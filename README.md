@@ -48,4 +48,4 @@ More details on output files and a complete explanation of the analysis can be f
 
 ### 5. REFERENCES: ###
 - - - -
-Francino-Urdaniz, I. et al. (2021) ‘One-shot identification of SARS-CoV-2 S RBD escape mutants using yeast screening’, bioRxiv, 1(303), pp. 1–12.
+Francino-Urdaniz, I. et al. (2021) ‘One-shot identification of SARS-CoV-2 S RBD escape mutants using yeast screening’, Cell Reports https://doi.org/10.1016/j.celrep.2021.109627
