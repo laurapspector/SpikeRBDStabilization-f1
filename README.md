@@ -1,6 +1,6 @@
 SpikeRBDStabilization README File
 
-Last Updated: July 21 2021
+Last Updated: October 14, 2021
 
 ## CONTENTS: ##
 1. About
@@ -12,14 +12,14 @@ Last Updated: July 21 2021
 
 ### 1. ABOUT: ###
 - - - -
-This software identifies potential escape mutants for a given neutralizing antibody (nAb) that binds to the Spike receptor binding domain (S RBD) on SARS-CoV-2. The code was initially used in Francino-Urdaniz et al. (2021). To accompany this, a protocol paper was written with explicit instructions for completing experiments and running this software correctly **(link to be added upon publication)**.
+This software identifies potential escape mutants for a given neutralizing antibody (nAb) that binds to the Spike receptor binding domain (S RBD) on SARS-CoV-2. The code was initially used in [Francino-Urdaniz et al. (2021)](https://doi.org/10.1016/j.celrep.2021.109627). To accompany this publication, a protocol paper was written with explicit instructions for completing experiments and running this software correctly ([Haas et al., 2021](https://doi.org/10.1016/j.xpro.2021.100869)).
 
 The software includes two separate modules: deep mutational scanning (abbreviated 'dms') and 'analysis'. They are run separately, first the dms module and then the analysis module. The dms module is responsible for compiling all data from deep sequencing FASTQ files and calculating basic metrics. The analysis section calculates statistics, determines escape mutants and generates the final CSV files and Microsoft Excel heatmaps.
 
 
 ### 2. DETAILED INSTRUCTIONS: ###
 - - - -
-For a comprehensive description and instructions on the setup, inputs, and optional arguments for this software, please refer to the protocol **(link to be added upon publication)**.
+For a comprehensive description and instructions on the setup, inputs, and optional arguments for this software, please refer to the protocol ([Haas et al., 2021](https://doi.org/10.1016/j.xpro.2021.100869)).
 
 
 ### 3. RUNNING THE CODE: ###
@@ -43,9 +43,11 @@ The Processed folder contains:
 1. A CSV file for each nAb that now includes a critical enrichment ratio, false discovery rate and a p-value for the significance of each enrichment ratio.
 2. A Microsoft Excel file for each nAb that shows a heatmap of the variants with any mutants classified as escape mutant hits are highlighted in blue.
 
-More details on output files and a complete explanation of the analysis can be found in the protocol **(link to be added upon publication)**.
+More details on output files and a complete explanation of the analysis can be found in [Haas et al., 2021](https://doi.org/10.1016/j.xpro.2021.100869).
 
 
 ### 5. REFERENCES: ###
 - - - -
-Francino-Urdaniz, I. et al. (2021) ‘One-shot identification of SARS-CoV-2 S RBD escape mutants using yeast screening’, Cell Reports https://doi.org/10.1016/j.celrep.2021.109627
+Francino-Urdaniz, I. M., Steiner, P. J., Kirby, M. B., Zhao, F., Haas, C. M., Barman, S., Rhodes, E. R., Leonard, A. C., Peng, L., Sprenger, K. G., Jardine, J. G., & Whitehead, T. A. (2021). One-shot identification of SARS-CoV-2 S RBD escape mutants using yeast screening. *Cell Reports (Cambridge)*, 36(9), 109627-109627. https://doi.org/10.1016/j.celrep.2021.109627
+
+Haas, C. M., Francino-Urdaniz, I. M., Steiner, P. J., & Whitehead, T. A. (2021). Identification of SARS-CoV-2 S RBD escape mutants using yeast screening and deep mutational scanning. *STAR Protocols*, 2(4), 100869-100869. https://doi.org/10.1016/j.xpro.2021.100869
