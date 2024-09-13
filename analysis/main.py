@@ -101,7 +101,7 @@ def parse_args_again(args):
         for num in range(0, len(t_seq)):
             wt_seq[num + int(tiles[k].first_aa)] = t_seq[num]
 
-    return positions, wt_seq
+    return positions, wt_seq, params.output_dir
 
 def parse_analysis(c):
     if not c.has_section('Analysis'):
@@ -158,8 +158,10 @@ def perform_analysis(c_file, a_file, fdr, significance, out, sizes, prd, all_pos
                if (Ab, rep, tile) in data]
         if len(dfs) == 0: continue
         d = pd.concat(dfs)
-        d.to_csv(os.path.join(prd, f'{out}.csv'), index=False)
-        write_heatmap(os.path.join(prd, f'{out}_heatmap.xlsx'),
+        if not os.path.exists(os.path.join(prd, 'Processed')):
+            os.makedirs(os.path.join(prd, 'Processed'))
+        d.to_csv(os.path.join(prd, 'Processed', f'{out}.csv'), index=False)
+        write_heatmap(os.path.join(prd, 'Processed', f'{out}_heatmap.xlsx'),
                       wt_seq, all_positions, [d], 'ER', significance)
 
 def main(argv):
@@ -173,7 +175,7 @@ def main(argv):
     current_directory = os.getcwd()
     processed_directory = os.path.join(current_directory, 'Processed')
 
-    positions, wt_seq = parse_args_again(argv)
+    positions, wt_seq, processed_directory = parse_args_again(argv)  # I have edited this to allow path configuration
     all_positions = sorted(it.chain(*positions.values()))
 
     # Library sizes for each tile. The libraries are NNKs that target all

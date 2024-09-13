@@ -179,6 +179,8 @@ def main(argv):
 #         out_path = os.path.join(params.output_dir, 'Output', f'{sample}_stats.tsv')
 #         write_stats(stats[sample], out_path)
 
+    if not os.path.exists(os.path.join(params.output_dir, 'Output')):
+        os.makedirs(os.path.join(params.output_dir, 'Output'))
     data = process_all_experiments(params, tiles, samples, experiments, counts)
     for protein, exps in proteins.items():
         out_path = os.path.join(params.output_dir, 'Output', f'{protein}_counts.csv')
