@@ -83,6 +83,14 @@ def merge_reads(s1, s2, q1, q2, amplen):
     offset = amplen - len(s2)
 
     # Fill in the parts of the merged sequence where the reads don't overlap.
+    # This condition throws an error so return a very high number of mismatches so the read is thrown out after return
+    if offset > len(s1):
+        return None, None, 100
+    # Fill in the parts of the merged sequence where the reads don't overlap.
+    try:
+        s[:offset] = s1[:offset]  # ValueError if offset > len(s1)
+    except:
+        import pdb; pdb.set_trace()
     s[:offset] = s1[:offset]
     q[:offset] = q1[:offset]
     s[len(s1):] = s2[len(s1)+len(s2)-amplen:]
