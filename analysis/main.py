@@ -35,7 +35,7 @@ def pois_exact_test(row, ratio_null=1):
     """
     p = test_poisson_2indep(row.sel_counts, row.sel_total,
                             row.ref_counts, row.ref_total,
-                            ratio_null=ratio_null,
+                            value=ratio_null,  # "ratio_null" is deprecated in favor of "value"
                             alternative='larger',
                             method='exact-cond')
     return p.pvalue
